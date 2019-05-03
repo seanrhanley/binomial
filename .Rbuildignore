@@ -3,3 +3,5 @@
 ^doc$
 ^Meta$
 ^devtools-flow.R
+^auxillary.R
+^tests.R
