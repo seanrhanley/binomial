@@ -42,7 +42,8 @@ bin_probability(success = 55, trials = 100, prob = 0.45)
 
 `bin_distribution()` finds the probability distribution:
 ```{r}
-bin_distribution(trials = 5, prob = 0.5)
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+plot(dis1)
 ```
 `bin_cumulative()` finds the cumulative probability that sums to 1:
 ```{r}
