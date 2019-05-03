@@ -1,0 +1,81 @@
+---
+title: "Getting Started with binomial"
+author: "Sean Hanley"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to binomial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+library(binomial)
+```
+
+## Combinatorics
+
+The package `"binomial"` allows  the user to play around with simple binomial theorem functions and basic plots.
+
+## Using `binomial`
+
+Here's how to use the available functions, starting with `bin_choose()`, which Calculates the number of combinations in which k successes occur in n trials:
+
+```{r}
+bin_choose(5, 0)
+bin_choose(5, 1:3)
+```
+
+`bin_probability()` finds probable number of successes:
+
+```{r}
+# probability of getting 2 successes in 5 trials
+# (assuming prob of success = 0.5)
+bin_probability(success = 2, trials = 5, prob = 0.5)
+# probabilities of getting 2 or less successes in 5 trials
+# (assuming prob of success = 0.5)
+bin_probability(success = 0:2, trials = 5, prob = 0.5)
+# 55 heads in 100 tosses of a loaded coin with 45% chance of heads
+bin_probability(success = 55, trials = 100, prob = 0.45)
+```
+
+`bin_distribution()` finds the probability distribution:
+```{r}
+bin_distribution(trials = 5, prob = 0.5)
+```
+`bin_cumulative()` finds the cumulative probability that sums to 1:
+```{r}
+bin_cumulative(trials = 5, prob = 0.5)
+# plotting binomial cumulative distribution
+dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+plot(dis2)
+#shows a graph of distribution
+```
+`bin_variable()` creates an object of class "binvar" then display a summary:
+```{r}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+binsum1 <- summary(bin1)
+binsum1
+```
+`bin_mean()` calculate the mean of binomial distribution(np):
+```{r}
+bin_mean(10, 0.3)
+```
+`bin_variance` calculate variance of binomial dist. (np(1-p)):
+```{r}
+bin_variance(10, 0.3)
+```
+`bin_mode()` calculate the most likely number of successes in n independent trials. (the floor of np + p):
+```{r}
+bin_mode(10, 0.3)
+```
+`bin_skewness()` calculate asymmetry of the probability dist. of a random variable about its mean.:
+```{r}
+bin_skewness(10, 0.3)
+```
+`bin_kurtosis()`calculate measure of "tailedness" of probability dist. of a random variable:
+```{r}
+bin_kurtosis(10, 0.3)
+```
+
